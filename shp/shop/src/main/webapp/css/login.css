@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+#loginn{
+	padding: 25px;
+
+    margin: 10px 0 0 15px;
+ 	background-color: pink;
+}
+#log{
+		width: 90px;
+ 		height: 40px;
+ 		background-color: red;
+ 		margin: 10px 0px 5px 10px;
+}
+#name lable,#pass lable{
+	color: black;
+
+    font-size: 13px;
+
+    font-family: 华文细黑;
+
+    font-weight: bold;
+}
+#name input,#pass input{
+	 display: block;
+
+    width: 270px;
+
+    border-radius: 3px;
+}
+#que{
+	border-bottom-color: blue;
+	width: 20px;
+	height: 20px;
+}

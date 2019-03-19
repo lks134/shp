@@ -1,0 +1,41 @@
+
+#regist{
+ 	
+
+    
+
+    padding: 25px;
+
+    margin: 10px 0 0 15px;
+ 	background-color: pink;
+ 	}
+.reg_title{
+ 		width: 130px;
+ 		height: 20px;
+ 		background-color: brown;
+ 		margin: 10px 0px 5px 10px;
+ 	}
+ .row1 label,
+
+.row2 label,.row3 lable,.row4 lable,.row5 lable {
+
+    color: black;
+
+    font-size: 13px;
+
+    font-family: »ªÎÄÏ¸ºÚ;
+
+    font-weight: bold;
+
+}
+ .row1 input,
+
+.row2 input,.row3 input,.row4 input,.row5 input {
+
+    display: block;
+
+    width: 270px;
+
+    border-radius: 3px;
+
+}	

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzq.dao.ProductDao">
+	<!-- //总条数public Integer productCountByQueryVo(Product product); -->
+	<select id="productCountByQueryVo" parameterType="com.zzq.domain.Query" resultType="Integer">
+		select count(1) from product
+		<where>
+			<if test="productName != null and productName != ''">
+				product_name like "%"#{productName}"%"
+			</if>
+			
+		</where>
+	</select>
+	<!-- //结果集public List<Product> selectProductListByQueryVo(Product product); -->
+	<select id="selectProductListByQueryVo" parameterType="com.zzq.domain.Query" resultType="com.zzq.domain.Product">
+		select * from product
+		<where>
+			<if test="productName != null and productName != ''">
+				product_name like "%"#{productName}"%"
+			</if>
+		</where>
+		limit #{startRow},#{size}
+	</select>
+	<select id="selectProductById" parameterType="int" resultType="com.zzq.domain.Product">
+		select *from product where product_id=#{id}
+	</select>
+	<!--删除商品根据id  -->
+	<delete id="deleteProductById" parameterType="int">
+		delete from product where product_id=#{id}
+	</delete>
+	
+	<!-- //修改客户通过ID public void updateProductById(Product product); -->
+	<update id="updateProductById" parameterType="com.zzq.domain.Product">
+		update product 
+		<set>
+			<if test="product_count !=0">
+				product_count = #{product_count},
+			</if>
+			<if test="product_name!=null">
+				product_name=#{product_name}
+			</if>
+		</set>
+		<where>
+			cust_id = #{cust_id}
+		</where>
+	</update>
+	<select id="queryProduct" resultType="com.zzq.domain.Product">
+		select *from product
+	</select>
+	<insert id="addShopcar" parameterType="com.zzq.domain.Product">
+		insert into shopcar(product_id,product_name,product_price,product_count)
+		values(#{product_id},#{product_name},#{product_price},#{product_count})
+	</insert>
+	<select id="showShopcar" resultType="com.zzq.domain.Shopcar">
+		select * from shopcar
+	</select>
+</mapper>

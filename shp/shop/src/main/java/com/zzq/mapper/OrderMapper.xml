@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzq.dao.OrderDao">
+	<resultMap type="com.zzq.domain.Order" id="ordertresultMap">
+		<id column="order_id" property="order_id"/>
+		<result column="order_price" property="order_price"/>
+		<result column="order_status" property="status"/>
+	</resultMap>
+	<insert id="addOrder" parameterType="com.zzq.domain.Order">
+		insert into order(order_price,order_status) 
+		values(#{order_price},#{order_status})
+	</insert>
+	
+	<select id="findOrder" resultType="com.zzq.domain.Order">
+		select * from order
+	</select>
+	
+	<delete id="deleteOrder" parameterType="int">
+		delete from order where order_id=#{id}
+	</delete>
+	
+	<update id="updateOrderStatus" parameterType="int">
+		update order
+		<set>
+			<if test="order_status==1">
+				order_status=#{order_status}
+			</if>
+		</set>
+		where order_id=#{id}
+	</update>
+</mapper>
